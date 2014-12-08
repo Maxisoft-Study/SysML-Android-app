@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion '19.1.0'
+
+    defaultConfig {
+        applicationId "mica.maxime.mica_sysml"
+        minSdkVersion 9
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+configurations {
+    compile.exclude group: 'stax'
+    compile.exclude group: 'xpp3'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:' + android.buildToolsVersion
+    compile 'com.android.support:support-annotations:' + android.buildToolsVersion
+    compile 'com.android.support:support-v4:' + android.buildToolsVersion
+    compile 'com.google.guava:guava:18.0'
+    compile 'org.eclipse.jetty:jetty-servlet:+'
+    compile 'com.squareup.okhttp:okhttp:2.+'
+    compile 'com.thoughtworks.xstream:xstream:1.4.7'
+}
