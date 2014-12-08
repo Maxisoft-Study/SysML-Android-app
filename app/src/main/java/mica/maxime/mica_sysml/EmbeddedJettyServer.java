@@ -25,12 +25,10 @@ public class EmbeddedJettyServer extends Service implements Const{
         server = new Server(8080);
 
         ServletContextHandler servletContextHandler = new ServletContextHandler();
-
         servletContextHandler.setContextPath("/");
-
         server.setHandler(servletContextHandler);
-
         servletContextHandler.addServlet(new ServletHolder(new Documents(this)), "/documents/*");
+
         serverExecutor.execute(new Runnable() {
             @Override
             public void run() {
